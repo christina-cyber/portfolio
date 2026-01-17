@@ -1,0 +1,108 @@
+.projectsSection {
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.heading {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    display: inline-block;
+}
+
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
+}
+
+.cardHeader {
+    padding: var(--spacing-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folderIcon {
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+}
+
+.externalLinks {
+    display: flex;
+    gap: 10px;
+}
+
+.cardBody {
+    padding: 0 var(--spacing-sm) var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.projectTitle {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.projectDescription {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.techList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Icons */
+.icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    transition: color 0.2s ease;
+}
+
+.icon:hover {
+    color: var(--accent);
+}

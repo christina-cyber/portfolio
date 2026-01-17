@@ -1,0 +1,78 @@
+.contactSection {
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 600px;
+    margin: 0 auto 100px auto;
+    text-align: center;
+}
+
+.heading {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.subText {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.contactBtn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    background: transparent;
+}
+
+.contactBtn:hover {
+    background-color: rgba(49, 151, 149, 0.1);
+    transform: translateY(-2px);
+    /* Using accents color with opacity using rgba manually or setup opacity logic */
+}
+
+/* Form Styles if using a form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: left;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.input,
+.textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 150px;
+}
