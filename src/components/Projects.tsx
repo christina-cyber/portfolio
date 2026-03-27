@@ -1,5 +1,6 @@
 "use client";
 
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import styles from './Projects.module.css';
 
 interface Project {
@@ -13,18 +14,25 @@ interface Project {
 const projects: Project[] = [
     {
         title: 'E-Commerce Dashboard',
-        description: 'A comprehensive dashboard for managing products, orders, and analytics. Built with performance in mind.',
-        tech: ['Next.js', 'TypeScript', 'Tailwind', 'React', 'Node.js'],
-        liveUrl: 'https://farm-to-concumer-b2c-ecommerce-app.vercel.app/login', // Placeholder
+        description: 'A comprehensive high-performance dashboard for managing products, complex orders, and live analytics flows.',
+        tech: ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
+        liveUrl: 'https://farm-to-concumer-b2c-ecommerce-app.vercel.app/login', 
         githubUrl: 'https://github.com/christina-cyber/farm-to-concumer-b2c-ecommerce-app',
     },
 
     {
-        title: 'GHL Funnel',
-        description: 'A landing page for a GHL funnel. Built with performance in mind.',
-        tech: ['GHL'],
-        liveUrl: 'https://app.gohighlevel.com/v2/preview/8MSmzKAOYJ0ZGtZClh05', // Placeholder
+        title: 'Conversion Funnel Engine',
+        description: 'A high-converting landing page ecosystem integrated directly with GoHighLevel CRM for maximum automated lead capture.',
+        tech: ['GoHighLevel', 'CSS', 'JavaScript'],
+        liveUrl: 'https://app.gohighlevel.com/v2/preview/8MSmzKAOYJ0ZGtZClh05', 
     },
+    {
+        title: 'Financial SaaS Platform',
+        description: 'Secure and scalable financial tracking platform featuring deep data visualization and robust RBAC.',
+        tech: ['React', 'D3.js', 'PostgreSQL', 'Express'],
+        liveUrl: '#', 
+        githubUrl: '#',
+    }
 ];
 
 const FolderIcon = () => (
@@ -33,7 +41,7 @@ const FolderIcon = () => (
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
         className={styles.folderIcon}
@@ -73,18 +81,29 @@ const GithubIcon = () => (
 );
 
 const Projects = () => {
+    const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+
     const handleCardClick = (url: string) => {
         window.open(url, '_blank', 'noopener,noreferrer');
     };
 
     return (
-        <section id="projects" className={styles.projectsSection}>
-            <h2 className={styles.heading}>Some Things I've Built</h2>
+        <section 
+            id="projects" 
+            ref={ref}
+            className={`${styles.projectsSection} ${isVisible ? styles.visible : styles.hidden}`}
+        >
+            <div className={styles.sectionHeader}>
+                <h2 className={styles.heading}>03. Featured Work</h2>
+                <div className={styles.line}></div>
+            </div>
+            
             <div className={styles.grid}>
                 {projects.map((project, index) => (
                     <div
                         key={index}
                         className={styles.card}
+                        style={{ animationDelay: `${index * 0.2}s` }}
                         onClick={() => handleCardClick(project.liveUrl)}
                         role="button"
                         tabIndex={0}
@@ -94,34 +113,36 @@ const Projects = () => {
                             }
                         }}
                     >
-                        <div className={styles.cardHeader}>
-                            <FolderIcon />
-                            <div className={styles.externalLinks}>
-                                {project.githubUrl && (
+                        <div className={styles.cardContent}>
+                            <div className={styles.cardHeader}>
+                                <FolderIcon />
+                                <div className={styles.externalLinks}>
+                                    {project.githubUrl && (
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()} // Prevent card click
+                                            aria-label="GitHub Link"
+                                        >
+                                            <GithubIcon />
+                                        </a>
+                                    )}
                                     <a
-                                        href={project.githubUrl}
+                                        href={project.liveUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()} // Prevent card click
-                                        aria-label="GitHub Link"
+                                        aria-label="External Link"
                                     >
-                                        <GithubIcon />
+                                        <ExternalLinkIcon />
                                     </a>
-                                )}
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={(e) => e.stopPropagation()} // Prevent card click
-                                    aria-label="External Link"
-                                >
-                                    <ExternalLinkIcon />
-                                </a>
+                                </div>
                             </div>
-                        </div>
-                        <div className={styles.cardBody}>
+                            
                             <h3 className={styles.projectTitle}>{project.title}</h3>
                             <p className={styles.projectDescription}>{project.description}</p>
+                            
                             <ul className={styles.techList}>
                                 {project.tech.map((t) => (
                                     <li key={t}>{t}</li>

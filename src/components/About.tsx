@@ -9,14 +9,12 @@ const About = () => {
     });
 
     const skills = [
-        'JavaScript (ES6+)',
+        'React & Next.js',
         'TypeScript',
-        'React',
-        'Next.js',
-        'Node.js',
-        'GoHighLevel',
-        'PostgreSQL',
-        'AWS',
+        'Node.js & Express',
+        'PostgreSQL & Supabase',
+        'UI/UX Prototyping',
+        'GoHighLevel Automation',
     ];
 
     return (
@@ -25,29 +23,39 @@ const About = () => {
             ref={ref}
             className={`${styles.aboutSection} ${isVisible ? styles.visible : styles.hidden}`}
         >
-            <h2 className={styles.heading}>About Me</h2>
+            <div className={styles.sectionHeader}>
+                <h2 className={styles.heading}>01. About Me</h2>
+                <div className={styles.line}></div>
+            </div>
+            
             <div className={styles.content}>
                 <div className={styles.text}>
                     <p>
-                        Hello! My name is Krishtina Khatiwada and I enjoy creating things that live on the internet.
-                        My interest in web development started back in 2020 when I decided to try editing custom Tumblr themes —
-                        turns out hacking together HTML & CSS was exciting!
+                        I'm a Full Stack Developer based in Nepal, specializing in building exceptional digital experiences. 
+                        My journey began with a curiosity for how the web works, which quickly evolved into a passion 
+                        for engineering scalable applications and intuitive user interfaces.
                     </p>
                     <p>
-                        Fast-forward to today, and I’ve had the privilege of working at an advertising agency, a start-up,
-                        and a huge corporation. My main focus these days is building accessible, inclusive products and digital experiences
-                        for a variety of clients.
+                        Today, I partner with businesses globally—from innovative startups in the US to established agencies in the UK and Australia—delivering 
+                        high-quality code and design that drives real business value. I don't just write code; I solve problems.
                     </p>
-                    <p>Here are a few technologies I’ve been working with recently:</p>
+                    <p>
+                        Here are a few technologies I’ve been working with recently:
+                    </p>
                     <ul className={styles.skillsList}>
                         {skills.map((skill) => (
                             <li key={skill} className={styles.skillItem}>{skill}</li>
                         ))}
                     </ul>
                 </div>
-                <div className={styles.imageWrapper}>
-                    {/* Placeholder for profile image - could be a Next Image */}
-                    {/* <img src="/profile.jpg" alt="Profile" /> */}
+                <div className={styles.imageContainer}>
+                    <div className={styles.imageWrapper}>
+                        <div className={styles.imageOverlay}></div>
+                        {/* Add your professional headshot here */}
+                        <div className={styles.imagePlaceholder}>
+                            <span>Profile</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
